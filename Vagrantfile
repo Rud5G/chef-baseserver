@@ -19,20 +19,20 @@ Vagrant.configure("2") do |config|
   # options are documented and commented below. For a complete reference,
   # please see the online documentation at vagrantup.com.
   config.vm.define :centos63 do |centos63|
-    centos63.vm.hostname = "server-berkshelf"
+    centos63.vm.hostname = 'berkshelf-centos-6.3'
 
     # Every Vagrant virtual environment requires a box to build off of.
-    centos63.vm.box = "Berkshelf-CentOS-6.3-x86_64-minimal"
+    centos63.vm.box = 'Berkshelf-CentOS-6.3-x86_64-minimal'
 
     # The url from where the 'config.vm.box' box will be fetched if it
     # doesn't already exist on the user's system.
-    centos63.vm.box_url = "https://dl.dropbox.com/u/31081437/Berkshelf-CentOS-6.3-x86_64-minimal.box"
+    centos63.vm.box_url = 'https://dl.dropbox.com/u/31081437/Berkshelf-CentOS-6.3-x86_64-minimal.box'
 
     # Assign this VM to a host-only network IP, allowing you to access it
     # via the IP. Host-only networks can talk to the host machine as well as
     # any other machines on the same network, but cannot be accessed (through this
     # network interface) by any external networks.
-    centos63.vm.network :private_network, ip: "33.33.33.31"
+    centos63.vm.network :private_network, ip: '33.33.33.31'
   end
 
 

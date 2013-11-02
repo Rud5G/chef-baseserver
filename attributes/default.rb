@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: server
-# Recipe:: default
+# Attributes:: default
 #
 # Copyright (C) 2013 Triple-networks
 # 
@@ -17,11 +17,8 @@
 # limitations under the License.
 #
 
-include_recipe 'apt'
-include_recipe 'yum'
-include_recipe 'git'
-include_recipe 'hostname'
-include_recipe 'ntp'
-include_recipe 'logrotate'
-include_recipe 'fail2ban'
-include_recipe 'vim'
+default['domain']                                     = Chef::Config[:node_name]
+default['set_fqdn']                                   = Chef::Config[:node_name]
+
+default['ntp']['servers']                             = %w{ 0.nl.pool.ntp.org 1.nl.pool.ntp.org 2.nl.pool.ntp.org 3.nl.pool.ntp.org }
+

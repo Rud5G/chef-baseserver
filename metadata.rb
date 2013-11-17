@@ -1,4 +1,4 @@
-name             'server'
+name             'baseserver'
 maintainer       'Triple-networks'
 maintainer_email 'r.gravestein@triple-networks.com'
 license          'Apache 2.0'

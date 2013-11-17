@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: server
+# Cookbook Name:: baseserver
 # Attributes:: default
 #
 # Copyright (C) 2013 Triple-networks

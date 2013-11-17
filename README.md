@@ -1,4 +1,4 @@
-# server cookbook
+# BaseServer Cookbook
 
 # Requirements
 

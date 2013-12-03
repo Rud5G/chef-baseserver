@@ -1,89 +1,60 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-Vagrant.configure("2") do |config|
-  config.berkshelf.enabled = true
-  config.omnibus.chef_version = :latest
 
-  # All Vagrant configuration is done here. The most common configuration
-  # options are documented and commented below. For a complete reference,
-  # please see the online documentation at vagrantup.com.
-  config.vm.define :ubuntu1204 do |ubuntu1204|
-    ubuntu1204.vm.box      = 'opscode-ubuntu-12.04'
-    ubuntu1204.vm.box_url  = 'https://opscode-vm.s3.amazonaws.com/vagrant/opscode_ubuntu-12.04_provisionerless.box'
-    ubuntu1204.vm.hostname = 'jira-ubuntu-1204'
-    ubuntu1204.vm.network :private_network, ip: '33.33.33.32'
+# check Vagrant version
+if Vagrant::VERSION < '1.2.4'
+  raise 'only compatible with Vagrant 1.2.4+'
+end
+
+
+# requires Vagrant plugins
+Vagrant.require_plugin 'vagrant-berkshelf'
+Vagrant.require_plugin 'vagrant-omnibus'
+
+
+
+
+Vagrant.configure('2') do |config|
+  config.vm.hostname = 'baseserver'
+
+  config.vm.define 'ubuntu-12.04', primary: true do |c|
+    c.vm.box = 'opscode-ubuntu-12.04'
+    c.vm.box_url = 'https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_ubuntu-12.04_provisionerless.box'
   end
 
-  # All Vagrant configuration is done here. The most common configuration
-  # options are documented and commented below. For a complete reference,
-  # please see the online documentation at vagrantup.com.
-  config.vm.define :centos63 do |centos63|
-    centos63.vm.hostname = 'berkshelf-centos-6.3'
+  #config.vm.define 'centos-6' do |c|
+  #  c.vm.box = 'opscode-centos-6.4'
+  #  c.vm.box_url = 'https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_centos-6.4_provisionerless.box'
+  #end
 
-    # Every Vagrant virtual environment requires a box to build off of.
-    centos63.vm.box = 'Berkshelf-CentOS-6.3-x86_64-minimal'
+  #config.vm.network :private_network, ip: '33.33.33.10'
+  #config.vm.network :private_network, ip: '172.16.1.5'
+  config.vm.network :private_network, ip: '192.168.50.4'
 
-    # The url from where the 'config.vm.box' box will be fetched if it
-    # doesn't already exist on the user's system.
-    centos63.vm.box_url = 'https://dl.dropbox.com/u/31081437/Berkshelf-CentOS-6.3-x86_64-minimal.box'
-
-    # Assign this VM to a host-only network IP, allowing you to access it
-    # via the IP. Host-only networks can talk to the host machine as well as
-    # any other machines on the same network, but cannot be accessed (through this
-    # network interface) by any external networks.
-    centos63.vm.network :private_network, ip: '33.33.33.31'
-  end
-
-
-  # Create a public network, which generally matched to bridged network.
-  # Bridged networks make the machine appear as another physical device on
-  # your network.
-
-  # config.vm.network :public_network
-
-  # Create a forwarded port mapping which allows access to a specific port
-  # within the machine from a port on the host machine. In the example below,
-  # accessing "localhost:8080" will access port 80 on the guest machine.
 
   # Share an additional folder to the guest VM. The first argument is
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
-  # config.vm.synced_folder "../data", "/vagrant_data"
+  # config.vm.synced_folder '../data', '/vagrant_data'
 
-  # Provider-specific configuration so you can fine-tune various
-  # backing providers for Vagrant. These expose provider-specific options.
-  # Example for VirtualBox:
-  #
-  # config.vm.provider :virtualbox do |vb|
-  #   # Don't boot with headless mode
-  #   vb.gui = true
-  #
-  #   # Use VBoxManage to customize the VM. For example to change memory:
-  #   vb.customize ["modifyvm", :id, "--memory", "1024"]
-  # end
-  #
-  # View the documentation for the provider you're using for more
-  # information on available options.
+  # Provider-specific configuration
+  config.vm.provider :virtualbox do |vb|
+    vb.customize ['modifyvm', :id, '--memory', 1024]
+  end
 
-  config.ssh.max_tries = 40
-  config.ssh.timeout   = 120
-
-  # The path to the Berksfile to use with Vagrant Berkshelf
-  # config.berkshelf.berksfile_path = "./Berksfile"
+  if Vagrant::VERSION < '1.3.0'
+    config.ssh.max_tries = 40
+    config.ssh.timeout   = 120
+  else
+    config.vm.boot_timeout = 300
+  end
 
   # Enabling the Berkshelf plugin. To enable this globally, add this configuration
   # option to your ~/.vagrant.d/Vagrantfile file
   config.berkshelf.enabled = true
-
-  # An array of symbols representing groups of cookbook described in the Vagrantfile
-  # to exclusively install and copy to Vagrant's shelf.
-  # config.berkshelf.only = []
-
-  # An array of symbols representing groups of cookbook described in the Vagrantfile
-  # to skip installing and copying to Vagrant's shelf.
-  # config.berkshelf.except = []
+  config.omnibus.chef_version = :latest
 
   config.vm.provision :chef_solo do |chef|
     chef.json = {
@@ -94,8 +65,9 @@ Vagrant.configure("2") do |config|
       }
     }
 
-    chef.run_list = [
-        "recipe[baseserver::default]"
-    ]
+    chef.run_list = %w{
+      recipe[baseserver::default]
+      recipe[simple_cuke]
+    }
   end
 end

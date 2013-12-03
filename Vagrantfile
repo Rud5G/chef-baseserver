@@ -67,6 +67,7 @@ Vagrant.configure('2') do |config|
 
     chef.run_list = %w{
       recipe[baseserver::default]
+      recipe[simple_cuke]
     }
   end
 end

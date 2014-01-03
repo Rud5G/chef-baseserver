@@ -25,3 +25,5 @@ include_recipe 'ntp'
 include_recipe 'logrotate'
 include_recipe 'fail2ban'
 include_recipe 'vim'
+include_recipe 'newrelic-ng'
+

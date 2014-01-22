@@ -4,6 +4,8 @@
 
 # Requirements
 
+* kitchen-vagrant
+
 # Usage
 
 # Attributes

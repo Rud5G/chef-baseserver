@@ -10,6 +10,6 @@ version          '0.2.2'
   supports os
 end
 
-%w{ apt fail2ban git hostname newrelic-ng ntp logrotate vim yum }.each do |cb|
+%w{ apt fail2ban git hostname ntp logrotate vim yum }.each do |cb|
   depends cb
 end

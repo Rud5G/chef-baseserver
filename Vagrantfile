@@ -1,62 +1,71 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-
-# check Vagrant version
-if Vagrant::VERSION < '1.2.4'
-  raise 'only compatible with Vagrant 1.2.4+'
-end
+VAGRANTFILE_API_VERSION = '2'
+VAGRANT_MIN_VERSION = '1.3.4'
 
 
-# requires Vagrant plugins
-Vagrant.require_plugin 'vagrant-berkshelf'
-Vagrant.require_plugin 'vagrant-omnibus'
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+# Check Vagrant version
+  if Vagrant::VERSION < VAGRANT_MIN_VERSION
+    puts "FATAL: Cookbook depends on Vagrant #{VAGRANT_MIN_VERSION} or higher."
+    exit
+  end
 
+# Plugin-specific configurations
+  # Detects vagrant-cachier plugin
+  if Vagrant.has_plugin?('vagrant-cachier')
+    puts 'INFO:  Vagrant-cachier plugin detected. Optimizing caches.'
+    config.cache.auto_detect = true
+    config.cache.enable :chef
+    config.cache.enable :apt
+  else
+    puts 'WARN:  Vagrant-cachier plugin not detected. Continuing unoptimized.'
+  end
 
+  # Detects vagrant-omnibus plugin
+  if Vagrant.has_plugin?('vagrant-omnibus')
+    puts 'INFO:  Vagrant-omnibus plugin detected.'
+    config.omnibus.chef_version = :latest
+  else
+    puts "FATAL: Vagrant-omnibus plugin not detected. Please install the plugin with\n       'vagrant plugin install vagrant-omnibus' from any other directory\n       before continuing."
+    exit
+  end
 
+  # Detects vagrant-berkshelf plugin
+  if Vagrant.has_plugin?('berkshelf')
+    # The path to the Berksfile to use with Vagrant Berkshelf
+    puts 'INFO:  Vagrant-berkshelf plugin detected.'
+    config.berkshelf.berksfile_path = './Berksfile'
+  else
+    puts "FATAL: Vagrant-berkshelf plugin not detected. Please install the plugin with\n       'vagrant plugin install vagrant-berkshelf' from any other directory\n       before continuing."
+    exit
+  end
 
-Vagrant.configure('2') do |config|
+# vm config
   config.vm.hostname = 'baseserver'
 
-  config.vm.define 'ubuntu-12.04', primary: true do |c|
-    c.vm.box = 'opscode-ubuntu-12.04'
-    c.vm.box_url = 'https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_ubuntu-12.04_provisionerless.box'
-  end
+  config.vm.box = 'opscode-ubuntu-12.04'
+  config.vm.box_url = 'https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_ubuntu-12.04_provisionerless.box'
 
-  #config.vm.define 'centos-6' do |c|
-  #  c.vm.box = 'opscode-centos-6.4'
-  #  c.vm.box_url = 'https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_centos-6.4_provisionerless.box'
-  #end
+  config.vm.network :private_network, :ip => '33.33.33.50'
 
-  #config.vm.network :private_network, ip: '33.33.33.10'
-  #config.vm.network :private_network, ip: '172.16.1.5'
-  config.vm.network :private_network, ip: '192.168.50.4'
-
-
-  # Share an additional folder to the guest VM. The first argument is
-  # the path on the host to the actual folder. The second argument is
-  # the path on the guest to mount the folder. And the optional third
-  # argument is a set of non-required options.
-  # config.vm.synced_folder '../data', '/vagrant_data'
-
-  # Provider-specific configuration
+# Provider-specific configuration
   config.vm.provider :virtualbox do |vb|
-    vb.customize ['modifyvm', :id, '--memory', 1024]
+    # Give enough horsepower to build without taking all day.
+    vb.customize [
+      'modifyvm', :id,
+      '--memory', '1024',
+      '--cpus', '2',
+    ]
   end
 
-  if Vagrant::VERSION < '1.3.0'
-    config.ssh.max_tries = 40
-    config.ssh.timeout   = 120
-  else
-    config.vm.boot_timeout = 300
-  end
+# Enable SSH agent forwarding for git clones
+  config.ssh.forward_agent = true
 
-  # Enabling the Berkshelf plugin. To enable this globally, add this configuration
-  # option to your ~/.vagrant.d/Vagrantfile file
-  config.berkshelf.enabled = true
-  config.omnibus.chef_version = :latest
 
   config.vm.provision :chef_solo do |chef|
+    # chef.provisioning_path = guest_cache_path
     chef.json = {
       :mysql => {
         :server_root_password => 'rootpass',
@@ -65,8 +74,8 @@ Vagrant.configure('2') do |config|
       }
     }
 
-    chef.run_list = %w{
-      recipe[baseserver::default]
-    }
+    chef.run_list = [
+      'recipe[baseserver::default]'
+    ]
   end
 end

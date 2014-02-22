@@ -1,16 +1,13 @@
 require 'serverspec'
+require 'chefspec'
 
 include Serverspec::Helper::Exec
 include Serverspec::Helper::DetectOS
 
-RSpec.configure do |c|
-  c.before :all do
-    c.path = '/sbin:/usr/sbin'
-    c.user = 'root'
+describe 'baseserver::default' do
+  let (:chef_run) { ChefSpec::Runner.new.converge 'baseserver::default' }
+  it 'installs the fail2ban package' do
+    expect(chef_run).to install_package('fail2ban')
   end
 end
 
-describe service('fail2ban') do
-  it { should be_enabled }
-  it { should be_running }
-end

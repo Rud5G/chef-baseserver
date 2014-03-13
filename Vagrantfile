@@ -78,6 +78,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.provision :chef_solo do |chef|
     # chef.provisioning_path = guest_cache_path
+    chef.data_bags_path = 'data_bags'
+    chef.environments_path = 'environments'
+    chef.roles_path = 'roles'
+    #chef.cookbooks_path = 'vendor/cookbooks'
+
+    chef.node_name = 'baseserver'
+    #chef.environment = '_default'
+
     chef.json = {
     }
 

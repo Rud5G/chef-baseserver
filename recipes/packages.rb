@@ -18,12 +18,17 @@
 #
 
 
+include_recipe 'apt'
+include_recipe 'yum'
 
-# display Chef Config object
-puts Chef::Config.inspect
+include_recipe 'ntp'
 
+include_recipe 'build-essential'
+include_recipe 'git'
 
+include_recipe 'logrotate'
 
-include_recipe 'baseserver::packages'
-include_recipe 'baseserver::users'
+include_recipe 'fail2ban'
+
+include_recipe 'vim'
 

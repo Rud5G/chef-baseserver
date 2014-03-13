@@ -17,7 +17,8 @@
 # limitations under the License.
 #
 
-default['domain']                                     = Chef::Config[:node_name]
-default['set_fqdn']                                   = Chef::Config[:node_name]
+#default['domain']                                     = Chef::Config[:node_name]
+#default['set_fqdn']                                   = Chef::Config[:node_name]
 
-default['ntp']['servers']                             = %w{ 0.nl.pool.ntp.org 1.nl.pool.ntp.org 2.nl.pool.ntp.org 3.nl.pool.ntp.org }
+
+default['ntp']['servers'] = %w{ 0.nl.pool.ntp.org 1.nl.pool.ntp.org 2.nl.pool.ntp.org 3.nl.pool.ntp.org }

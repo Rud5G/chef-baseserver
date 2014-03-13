@@ -17,11 +17,23 @@
 # limitations under the License.
 #
 
+
+
+# display Chef Config object
+puts Chef::Config.inspect
+
+
+
+#
 include_recipe 'apt'
 include_recipe 'yum'
-include_recipe 'git'
-include_recipe 'hostname'
+
 include_recipe 'ntp'
+
+include_recipe 'git'
+
 include_recipe 'logrotate'
+
 include_recipe 'fail2ban'
+
 include_recipe 'vim'

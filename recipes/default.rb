@@ -18,11 +18,13 @@
 #
 
 
-puts Chef::Config
 
+# display Chef Config object
 puts Chef::Config.inspect
 
 
+
+#
 include_recipe 'apt'
 include_recipe 'yum'
 

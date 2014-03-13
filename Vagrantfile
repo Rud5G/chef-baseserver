@@ -30,7 +30,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.hostmanager.manage_host = true
     config.hostmanager.ignore_private_ip = false
     config.hostmanager.include_offline = true
-    config.hostmanager.aliases = %w(baseserver www.baseserver)
+    config.hostmanager.aliases = %w(baseserver.localdomain www.baseserver)
   else
     puts "WARN:  Vagrant-hostmanager plugin not detected. Please install the plugin with\n       'vagrant plugin install vagrant-hostmanager' from any other directory\n       before continuing."
   end
@@ -58,15 +58,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.hostname = 'chef-baseserver'
 
   config.vm.box = 'opscode-ubuntu-12.04'
-  config.vm.box_url = 'https://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_ubuntu-12.04_provisionerless.box'
-
-
-  # Alternate images that are also suitable for use with this recipe
-  # config.vm.box = "canonical-ubuntu-12.04"
-  # config.vm.box_url = "http://cloud-images.ubuntu.com/vagrant/precise/current/precise-server-cloudimg-amd64-vagrant-disk1.box"
-  # config.vm.box = "opscode-centos-6.5"
-  # config.vm.box_url = "https://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_centos-6.5_provisionerless.box"
-
+  config.vm.box_url = 'https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_ubuntu-12.04_provisionerless.box'
 
 
   config.vm.network :private_network, :ip => '33.33.33.50'

@@ -1,0 +1,44 @@
+{
+    "id": "USERNAME",
+    "password": "$1$d...HgH0",
+    "ssh_keys": [
+        "ssh-rsa AAA123...xyz== foo",
+        "ssh-rsa AAA456...uvw== bar"
+    ],
+    "groups": [ "users", "www-data" ],
+    "uid": 1001,
+    "shell": "\/bin\/bash",
+    "comment": "USER NAME",
+    "files": {
+        /*
+         Files that live in users cookbook for the user. For example,
+         dotfiles. Note that in order for Chef to find dot files, they
+         can't start with a dot character. They have the following
+         structure:
+         ".file_under_$HOME": {
+         "mode": "0644",
+         "source": "dot_file"
+         }
+         */
+        // Example:
+        ".gemrc": {
+            "mode": "0644",
+            "source": "dot-gemrc"
+        }
+    },
+    "repos": {
+        /*
+         Repositories that should be checked out. They have the following
+         structure:
+         "path_under_$HOME": {
+         "repo": "git_url_to_repository",
+         "revision": "HEAD"
+         }
+         */
+        // Example:
+        ".rbenv": {
+            "repo": "git://github.com/sstephenson/rbenv.git",
+            "revision": "HEAD"
+        }
+    }
+}

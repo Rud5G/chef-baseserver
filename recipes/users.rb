@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: baseserver
-# Recipe:: default
+# Recipe:: users
 #
 # Copyright (C) 2013 Triple-networks
 #
@@ -19,11 +19,23 @@
 
 
 
-# display Chef Config object
-puts Chef::Config.inspect
+begin
+  data_bag('users').each do |user|
+    data_bag_item('users', user)
+  end
+rescue Net::HTTPServerException => e
+  Chef::Application.fatal!("could not load data bag; #{e}")
+end
+
+
+if Chef::Config[:solo]
+  include_recipe 'chef-solo-search'
+end
 
 
 
-include_recipe 'baseserver::packages'
-include_recipe 'baseserver::users'
+include_recipe 'users'
+include_recipe 'users::sysadmins'
+
+
 

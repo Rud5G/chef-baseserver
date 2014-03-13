@@ -10,7 +10,12 @@ version          '0.3.1'
   supports os
 end
 
-%w{ apt chef-solo-search fail2ban git hostsfile ntp logrotate users vim yum }.each do |cb|
+%w{ apt fail2ban git hostsfile ntp logrotate users vim yum }.each do |cb|
+  depends cb
+end
+
+# additional for chef-solo
+%w{ chef-solo-search }.each do |cb|
   depends cb
 end
 

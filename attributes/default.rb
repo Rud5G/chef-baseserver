@@ -20,5 +20,9 @@
 #default['domain']                                     = Chef::Config[:node_name]
 #default['set_fqdn']                                   = Chef::Config[:node_name]
 
+# Only create users from databag "users", which have the following group
+default['create_users_in_group'] = 'users'
 
+#
 default['ntp']['servers'] = %w{ 0.nl.pool.ntp.org 1.nl.pool.ntp.org 2.nl.pool.ntp.org 3.nl.pool.ntp.org }
+

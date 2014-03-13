@@ -1,13 +1,13 @@
 {
-    "id": "USERNAME",
+    "id": "username",
     "password": "$1$d...HgH0",
     "ssh_keys": [
         "ssh-rsa AAA123...xyz== foo",
         "ssh-rsa AAA456...uvw== bar"
     ],
-    "groups": [ "users", "www-data" ],
+    "groups": [ "baseusers", "www-data" ],
     "uid": 1001,
-    "shell": "\/bin\/bash",
+    "shell": "\/bin\/false",
     "comment": "USER NAME",
     "files": {
         /*

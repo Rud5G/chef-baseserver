@@ -83,8 +83,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.roles_path = 'roles'
     #chef.cookbooks_path = 'vendor/cookbooks'
 
+    chef.verbose_logging = true
     chef.node_name = 'baseserver'
-    #chef.environment = '_default'
+    chef.environment = 'development'
 
     chef.json = {
     }

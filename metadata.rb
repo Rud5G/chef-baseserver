@@ -4,13 +4,13 @@ maintainer_email 'r.gravestein@triple-networks.com'
 license          'Apache 2.0'
 description      'Installs/Configures a base server'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '0.4.0'
+version          '0.4.1'
 
 %w( centos redhat ubuntu ).each do |os|
   supports os
 end
 
-%w( apt fail2ban git hostsfile ntp logrotate users vim yum ).each do |cb|
+%w( apt build-essential fail2ban git hostsfile ntp logrotate users vim yum ).each do |cb|
   depends cb
 end
 

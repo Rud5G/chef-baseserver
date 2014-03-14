@@ -17,8 +17,6 @@
 # limitations under the License.
 #
 
-
-
 begin
   data_bag('users').each do |user|
     userdata = data_bag_item('users', user)
@@ -33,17 +31,11 @@ rescue Net::HTTPServerException => e
   Chef::Application.fatal!("could not load data bag; #{e}")
 end
 
-
-if Chef::Config[:solo]
-  include_recipe 'chef-solo-search'
-end
+include_recipe 'chef-solo-search' if Chef::Config[:solo]
 
 # check for users with the users group
 users_manage node['create_users_in_group'] do
-  action [ :remove, :create ]
+  action [:remove, :create]
 end
 
-#include_recipe 'users::sysadmins'
-
-
-
+# include_recipe 'users::sysadmins'

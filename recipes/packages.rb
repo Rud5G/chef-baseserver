@@ -17,7 +17,6 @@
 # limitations under the License.
 #
 
-
 include_recipe 'apt'
 include_recipe 'yum'
 
@@ -31,4 +30,3 @@ include_recipe 'logrotate'
 include_recipe 'fail2ban'
 
 include_recipe 'vim'
-

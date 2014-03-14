@@ -17,13 +17,8 @@
 # limitations under the License.
 #
 
-
-
 # display Chef Config object
-puts Chef::Config.inspect
-
-
+# puts Chef::Config.inspect
 
 include_recipe 'baseserver::packages'
 include_recipe 'baseserver::users'
-

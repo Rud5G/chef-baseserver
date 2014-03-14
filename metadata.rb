@@ -6,16 +6,15 @@ description      'Installs/Configures a base server'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          '0.4.0'
 
-%w{ centos redhat ubuntu }.each do |os|
+%w( centos redhat ubuntu ).each do |os|
   supports os
 end
 
-%w{ apt fail2ban git hostsfile ntp logrotate users vim yum }.each do |cb|
+%w( apt fail2ban git hostsfile ntp logrotate users vim yum ).each do |cb|
   depends cb
 end
 
 # additional for chef-solo
-%w{ chef-solo-search }.each do |cb|
+%w( chef-solo-search ).each do |cb|
   depends cb
 end
-

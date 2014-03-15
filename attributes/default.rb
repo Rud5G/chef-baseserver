@@ -19,6 +19,7 @@
 
 default['apt']['compiletime'] = true
 default['build_essential']['compiletime'] = true
+default['yum']['compiletime'] = true
 
 # Only create users from databag "users", which have the following group
 default['create_users_in_group'] = 'users'

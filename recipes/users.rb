@@ -23,7 +23,7 @@ begin
   data_bag('users').each do |user|
     userdata = data_bag_item('users', user)
 
-    if userdata['groups'].include?(node['create_users_in_group'])
+    if userdata['groups'].include?(node['users']['create_users_in_group'])
       Chef::Log.info('Create user: ' + userdata['id'])
     else
       Chef::Log.warn('Ignored user (invalid groups): ' + userdata['id'])
@@ -34,7 +34,7 @@ rescue Net::HTTPServerException => e
 end
 
 # check for users with the specified group (default:users)
-users_manage node['create_users_in_group'] do
+users_manage node['users']['create_users_in_group'] do
   action [:remove, :create]
 end
 

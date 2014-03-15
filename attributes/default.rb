@@ -22,7 +22,7 @@ default['build_essential']['compiletime'] = true
 default['yum']['compiletime'] = true
 
 # Only create users from databag "users", which have the following group
-default['create_users_in_group'] = 'users'
+default['users']['create_users_in_group'] = 'users'
 
 #
 default['ntp']['servers'] = %w( 0.nl.pool.ntp.org 1.nl.pool.ntp.org 2.nl.pool.ntp.org 3.nl.pool.ntp.org )

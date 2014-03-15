@@ -26,6 +26,7 @@ if platform?('debian', 'ubuntu')
   e.run_action(:run)
 end
 
+# start packages
 include_recipe 'apt'
 include_recipe 'yum'
 

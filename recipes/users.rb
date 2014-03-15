@@ -17,23 +17,23 @@
 # limitations under the License.
 #
 
+include_recipe 'chef-solo-search' if Chef::Config[:solo]
+
 begin
   data_bag('users').each do |user|
     userdata = data_bag_item('users', user)
 
     if userdata['groups'].include?(node['create_users_in_group'])
-      puts 'Create user: ' + userdata['id']
+      Chef::Log.info('Create user: ' + userdata['id'])
     else
-      puts 'Ignored user (invalid groups): ' + userdata['id']
+      Chef::Log.warn('Ignored user (invalid groups): ' + userdata['id'])
     end
   end
 rescue Net::HTTPServerException => e
   Chef::Application.fatal!("could not load data bag; #{e}")
 end
 
-include_recipe 'chef-solo-search' if Chef::Config[:solo]
-
-# check for users with the users group
+# check for users with the specified group (default:users)
 users_manage node['create_users_in_group'] do
   action [:remove, :create]
 end

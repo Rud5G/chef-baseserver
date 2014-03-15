@@ -17,6 +17,15 @@
 # limitations under the License.
 #
 
+# because of a bug, in which mysql-client could not be installed.
+if platform?('debian', 'ubuntu')
+  e = execute 'apt-get update' do
+    action :nothing
+  end
+
+  e.run_action(:run)
+end
+
 include_recipe 'apt'
 include_recipe 'yum'
 

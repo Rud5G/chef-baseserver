@@ -3,8 +3,7 @@ description 'Baseserver Role for servers'
 
 # List of recipes and roles to apply.
 run_list(
-  'role[base]',
-  'recipe[baseserver::default]'
+  'recipe[baseserver::baseserver]'
 )
 
 # Attributes applied if the node doesn't have it set already.

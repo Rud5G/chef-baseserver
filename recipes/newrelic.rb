@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: baseserver
-# Recipe:: default
+# Recipe:: newrelic
 #
 # Copyright (C) 2013 Triple-networks
 #
@@ -17,5 +17,11 @@
 # limitations under the License.
 #
 
-# display Chef Config object
-# puts Chef::Config.inspect
+unless node['newrelic']['license'].nil?
+
+  # runs newrelic: repository + server monitoring
+  include_recipe 'newrelic::default'
+
+  # include_recipe 'newrelic::php-agent'
+
+end

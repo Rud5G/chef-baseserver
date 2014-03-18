@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: baseserver
-# Recipe:: default
+# Recipe:: baseserver
 #
 # Copyright (C) 2013 Triple-networks
 #
@@ -17,5 +17,8 @@
 # limitations under the License.
 #
 
-# display Chef Config object
-# puts Chef::Config.inspect
+# baseserver role
+
+include_recipe 'baseserver::packages'
+include_recipe 'baseserver::newrelic'
+include_recipe 'baseserver::users'

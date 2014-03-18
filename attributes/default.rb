@@ -17,12 +17,21 @@
 # limitations under the License.
 #
 
+# compiletime
 default['apt']['compiletime'] = true
 default['build_essential']['compiletime'] = true
 default['yum']['compiletime'] = true
 
-# Only create users from databag "users", which have the following group
-default['users']['create_users_in_group'] = 'users'
+# newrelic
+default['newrelic']['license'] = nil
+default['newrelic']['use_vault'] = false
+default['newrelic']['data_bag']  = nil
+default['newrelic']['data_bag_item'] = nil
+default['newrelic']['application_monitoring']['enabled'] = nil
+default['newrelic']['application_monitoring']['appname'] = nil
 
-#
+# ntp
 default['ntp']['servers'] = %w( 0.nl.pool.ntp.org 1.nl.pool.ntp.org 2.nl.pool.ntp.org 3.nl.pool.ntp.org )
+
+# users. Only create users from databag "users", which have the following group
+default['users']['create_users_in_group'] = 'users'

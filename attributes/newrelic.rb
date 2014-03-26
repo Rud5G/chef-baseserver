@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: baseserver
-# Recipe:: newrelic
+# Attributes:: newrelic
 #
 # Copyright (C) 2013 Triple-networks
 #
@@ -17,11 +17,14 @@
 # limitations under the License.
 #
 
-unless node['newrelic']['license'].nil?
-  # runs newrelic: repository + server monitoring
-  include_recipe 'newrelic::default'
-end
+# newrelic
+default['newrelic']['license'] = nil
 
-unless node['newrelic']['application_monitoring']['enabled'].nil?
-  include_recipe 'newrelic::php-agent'
-end
+# newrelic - vault
+default['newrelic']['use_vault'] = false
+default['newrelic']['data_bag']  = nil
+default['newrelic']['data_bag_item'] = nil
+
+# newrelic application
+default['newrelic']['application_monitoring']['enabled'] = nil
+default['newrelic']['application_monitoring']['appname'] = "#{node['app_name']}-#{node.chef_environment}"

@@ -87,6 +87,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.node_name = 'baseserver'
     chef.environment = 'development'
 
+
     chef.json = {
     }
 

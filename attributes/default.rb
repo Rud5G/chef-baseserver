@@ -27,4 +27,3 @@ default['ntp']['servers'] = %w( 0.nl.pool.ntp.org 1.nl.pool.ntp.org 2.nl.pool.nt
 
 # users. Only create users from databag "users", which have the following group
 default['users']['create_users_in_group'] = 'users'
-

@@ -10,7 +10,7 @@ version          '0.5.3'
   supports os
 end
 
-%w( apt build-essential fail2ban git hostsfile lxmx_hostname newrelic ntp logrotate users vim yum ).each do |cb|
+%w( apt build-essential fail2ban git hostsfile newrelic ntp logrotate users vim yum ).each do |cb|
   depends cb
 end
 

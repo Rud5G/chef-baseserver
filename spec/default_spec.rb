@@ -14,10 +14,6 @@ describe 'baseserver::default' do
     chef_run.should include_recipe 'git'
   end
 
-  it 'should include the hostname recipe by default' do
-    chef_run.should include_recipe 'hostname'
-  end
-
   it 'should include the ntp recipe by default' do
     chef_run.should include_recipe 'ntp'
   end
@@ -36,10 +32,6 @@ describe 'baseserver::default' do
 
   it 'should include the users recipe by default' do
     chef_run.should include_recipe 'users'
-  end
-
-  it 'should include the hostname recipe by default' do
-    chef_run.should include_recipe 'hostname'
   end
 
 end

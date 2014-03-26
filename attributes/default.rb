@@ -38,10 +38,3 @@ default['ntp']['servers'] = %w( 0.nl.pool.ntp.org 1.nl.pool.ntp.org 2.nl.pool.nt
 # users. Only create users from databag "users", which have the following group
 default['users']['create_users_in_group'] = 'users'
 
-# hostname
-default['net']['hostname'] = Chef::Config['node_name']
-
-# Chef::Config[:solo]
-# Chef::Config[:knife][:chef_node_name]
-# Chef::Config[:knife][:fqdn]
-# default['net']['FQDN'] = Chef::Config['node_fqdn']

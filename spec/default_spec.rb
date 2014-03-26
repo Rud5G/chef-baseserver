@@ -1,0 +1,45 @@
+require 'chefspec'
+
+describe 'baseserver::default' do
+  let(:chef_run) { ChefSpec::ChefRunner.new.converge('baseserver::baseserver') }
+  it 'should include the apt recipe by default' do
+    chef_run.should include_recipe 'apt'
+  end
+
+  it 'should include the yum recipe by default' do
+    chef_run.should include_recipe 'yum'
+  end
+
+  it 'should include the git recipe by default' do
+    chef_run.should include_recipe 'git'
+  end
+
+  it 'should include the hostname recipe by default' do
+    chef_run.should include_recipe 'hostname'
+  end
+
+  it 'should include the ntp recipe by default' do
+    chef_run.should include_recipe 'ntp'
+  end
+
+  it 'should include the logrotate recipe by default' do
+    chef_run.should include_recipe 'logrotate'
+  end
+
+  it 'should include the fail2ban recipe by default' do
+    chef_run.should include_recipe 'fail2ban'
+  end
+
+  it 'should include the vim recipe by default' do
+    chef_run.should include_recipe 'vim'
+  end
+
+  it 'should include the users recipe by default' do
+    chef_run.should include_recipe 'users'
+  end
+
+  it 'should include the hostname recipe by default' do
+    chef_run.should include_recipe 'hostname'
+  end
+
+end

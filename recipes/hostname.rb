@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: baseserver
-# Recipe:: newrelic
+# Recipe:: hostname
 #
 # Copyright (C) 2013 Triple-networks
 #
@@ -17,11 +17,4 @@
 # limitations under the License.
 #
 
-unless node['newrelic']['license'].nil?
-
-  # runs newrelic: repository + server monitoring
-  include_recipe 'newrelic::default'
-
-  include_recipe 'newrelic::php-agent' if node.attribute?('php')
-
-end
+include_recipe 'lxmx_hostname'

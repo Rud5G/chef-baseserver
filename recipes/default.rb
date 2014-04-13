@@ -19,4 +19,3 @@
 
 # display Chef Config object
 # puts Chef::Config.inspect
-

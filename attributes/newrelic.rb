@@ -17,14 +17,12 @@
 # limitations under the License.
 #
 
-
-
 include_attribute 'php'
 
 
-# Recipe:
-require 'pp'
-pp node.debug_value(:php, :ext_conf_dir)
+# Debug Recipe:
+# require 'pp'
+# pp node.debug_value(:php, :ext_conf_dir)
 
 # newrelic
 default['newrelic']['license'] = nil
@@ -38,6 +36,3 @@ default['newrelic']['data_bag_item'] = nil
 default['newrelic']['application_monitoring']['enabled'] = nil
 default['newrelic']['application_monitoring']['appname'] = "#{node['app_name']}-#{node.chef_environment}"
 
-
-
-#default['php']['ext_conf_dir'] = nil

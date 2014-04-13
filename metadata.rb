@@ -15,8 +15,7 @@ end
 end
 
 # issue with 1.0.0
-depends "newrelic", "~> 0.5.8"
-
+depends 'newrelic', '~> 0.5.8'
 
 # additional for chef-solo
 %w( chef-solo-search ).each do |cb|

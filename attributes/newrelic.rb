@@ -19,7 +19,6 @@
 
 include_attribute 'php'
 
-
 # Debug Recipe:
 # require 'pp'
 # pp node.debug_value(:php, :ext_conf_dir)
@@ -35,4 +34,3 @@ default['newrelic']['data_bag_item'] = nil
 # newrelic application
 default['newrelic']['application_monitoring']['enabled'] = nil
 default['newrelic']['application_monitoring']['appname'] = "#{node['app_name']}-#{node.chef_environment}"
-

@@ -17,10 +17,10 @@
 # limitations under the License.
 #
 
-# compiletime
-default['apt']['compiletime'] = true
-default['build_essential']['compiletime'] = true
-default['yum']['compiletime'] = true
+# compile_time
+default['apt']['compile_time'] = true
+default['build-essential']['compile_time'] = true
+default['yum']['compile_time'] = true
 
 # ntp
 default['ntp']['servers'] = %w( 0.nl.pool.ntp.org 1.nl.pool.ntp.org 2.nl.pool.ntp.org 3.nl.pool.ntp.org )

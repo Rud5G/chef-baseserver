@@ -38,4 +38,4 @@ users_manage node['users']['create_users_in_group'] do
   action [:remove, :create]
 end
 
-# include_recipe 'users::sysadmins'
+include_recipe 'users::sysadmins'

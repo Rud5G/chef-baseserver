@@ -8,7 +8,7 @@ describe 'baseserver::default' do
   end
 
   it 'should include the apt recipe by default' do
-    chef_run.should include_recipe 'apt'
+    expect(chef_run).to include_recipe 'apt'
   end
 
   it 'should include the yum recipe by default' do
@@ -36,7 +36,7 @@ describe 'baseserver::default' do
   end
 
   it 'should include the users recipe by default' do
-    chef_run.should include_recipe 'users'
+    chef_run.should include_recipe 'users::sysadmins'
   end
 
 end

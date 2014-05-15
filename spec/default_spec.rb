@@ -1,7 +1,7 @@
-require 'chefspec'
+require_relative 'spec_helper'
 
 describe 'baseserver::default' do
-  let(:chef_run) { ChefSpec::ChefRunner.new.converge('baseserver::baseserver') }
+  let(:chef_run) { ChefSpec::Runner.new.converge('baseserver::baseserver') }
   it 'should include the apt recipe by default' do
     chef_run.should include_recipe 'apt'
   end

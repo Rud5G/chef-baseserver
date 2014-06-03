@@ -18,7 +18,7 @@
 #
 
 # compile_time
-default['apt']['compile_time'] = true
+default['apt']['compiletime'] = true
 default['build-essential']['compile_time'] = true
 default['yum']['compile_time'] = true
 

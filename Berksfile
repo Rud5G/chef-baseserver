@@ -1,7 +1,3 @@
-site :opscode
+source "https://api.berkshelf.com"
 
 metadata
-
-# issue in-case php cookbook not included.
-#cookbook 'newrelic', github: 'escapestudios-cookbooks/newrelic'
-

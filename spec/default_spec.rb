@@ -1,7 +1,10 @@
 require_relative 'spec_helper'
 
-describe 'baseserver::default' do
-  let(:chef_run) { ChefSpec::Runner.new.converge('baseserver::baseserver') }
+describe 'baseserver::baseserver' do
+  let(:chef_run) do
+    runner = ChefSpec::Runner.new
+    runner.converge('baseserver::baseserver')
+  end
 
   before do
     stub_data_bag('users').and_return([])
@@ -35,7 +38,7 @@ describe 'baseserver::default' do
     chef_run.should include_recipe 'vim'
   end
 
-  it 'should include the users recipe by default' do
+  it 'should include the sysadmins recipe by default' do
     chef_run.should include_recipe 'users::sysadmins'
   end
 

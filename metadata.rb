@@ -25,4 +25,3 @@ depends 'yum', '~> 3.2.0'
 
 # additional for chef-solo
 depends 'chef-solo-search', '~> 0.5.1'
-

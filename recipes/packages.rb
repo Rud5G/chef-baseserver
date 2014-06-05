@@ -21,13 +21,14 @@
 include_recipe 'apt'
 include_recipe 'yum'
 
+include_recipe 'build-essential'
+
+include_recipe 'vim'
+
 include_recipe 'ntp'
 
-include_recipe 'build-essential'
 include_recipe 'git'
 
 include_recipe 'logrotate'
 
 include_recipe 'fail2ban'
-
-include_recipe 'vim'

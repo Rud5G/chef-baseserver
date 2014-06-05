@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 
-gem 'berkshelf', '~> 2.0'
+gem 'berkshelf', '~> 3.1.1'
 gem 'chefspec', '~> 3.3'
-gem 'foodcritic', '~> 3.0'
-gem 'rubocop', '~> 0.20'
+gem 'foodcritic', '~> 3.0.3'
+gem 'rubocop', '~> 0.21.0'
 
 group :integration do
   gem 'test-kitchen', '~> 1.2'

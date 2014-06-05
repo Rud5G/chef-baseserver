@@ -8,19 +8,20 @@ description      'Installs/Configures baseserver'
 long_description 'Installs/Configures baseserver'
 version          '0.7.0'
 
-
 %w( centos redhat ubuntu ).each do |os|
   supports os
 end
 
-%w( apt build-essential fail2ban git hostsfile php ntp logrotate users vim yum ).each do |cb|
-  depends cb
-end
-
-# issue with 1.0.0
-depends 'newrelic', '~> 0.5.8'
+depends 'apt', '~> 2.4.0'
+depends 'build-essential', '~> 2.0.2'
+depends 'fail2ban', '~> 2.1.2'
+depends 'git', '~> 4.0.2'
+depends 'hostsfile', '~> 2.4.4'
+depends 'logrotate', '~> 1.6.0'
+depends 'ntp', '~> 1.6.2'
+depends 'users', '~> 1.7.0'
+depends 'vim', '~> 1.1.2'
+depends 'yum', '~> 3.2.0'
 
 # additional for chef-solo
-%w( chef-solo-search ).each do |cb|
-  depends cb
-end
+depends 'chef-solo-search', '~> 0.5.1'

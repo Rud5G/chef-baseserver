@@ -22,5 +22,3 @@
 include_recipe 'baseserver::default'
 include_recipe 'baseserver::packages'
 include_recipe 'baseserver::users'
-
-# newrelic is standard not included in baseserver; include if required

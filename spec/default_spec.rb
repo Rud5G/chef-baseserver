@@ -15,31 +15,31 @@ describe 'baseserver::baseserver' do
   end
 
   it 'should include the yum recipe by default' do
-    chef_run.should include_recipe 'yum'
+    expect(chef_run).to include_recipe 'yum'
   end
 
   it 'should include the git recipe by default' do
-    chef_run.should include_recipe 'git'
+    expect(chef_run).to include_recipe 'git'
   end
 
   it 'should include the ntp recipe by default' do
-    chef_run.should include_recipe 'ntp'
+    expect(chef_run).to include_recipe 'ntp'
   end
 
   it 'should include the logrotate recipe by default' do
-    chef_run.should include_recipe 'logrotate'
+    expect(chef_run).to include_recipe 'logrotate'
   end
 
   it 'should include the fail2ban recipe by default' do
-    chef_run.should include_recipe 'fail2ban'
+    expect(chef_run).to include_recipe 'fail2ban'
   end
 
   it 'should include the vim recipe by default' do
-    chef_run.should include_recipe 'vim'
+    expect(chef_run).to include_recipe 'vim'
   end
 
   it 'should include the sysadmins recipe by default' do
-    chef_run.should include_recipe 'users::sysadmins'
+    expect(chef_run).to include_recipe 'users::sysadmins'
   end
 
 end

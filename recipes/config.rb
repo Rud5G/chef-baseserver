@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: baseserver
-# Recipe:: baseserver
+# Recipe:: config
 #
 # Copyright (C) 2013 Triple-networks
 #
@@ -17,9 +17,11 @@
 # limitations under the License.
 #
 
-# baseserver role
-
-include_recipe 'baseserver::default'
-include_recipe 'baseserver::packages'
-include_recipe 'baseserver::config'
-include_recipe 'baseserver::users'
+# generate the locales
+bash 'generate the locales' do
+  user 'root'
+  code <<-EOH
+    sudo locale-gen #{node['locales'].join(' ')} > /tmp/locale.log 2>&1
+    sudo dpkg-reconfigure locales >> /tmp/locale.log 2>&1
+  EOH
+end

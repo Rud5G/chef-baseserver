@@ -4,6 +4,7 @@ Welcome, do not use this cookbook for any production environment, at this time.
 
 # Status
 
+[![Version Status](http://img.shields.io/badge/stable-0.7.3-blue.svg)]
 [![Build Status](https://travis-ci.org/Rud5G/chef-baseserver.png?branch=master)](https://travis-ci.org/Rud5G/chef-baseserver)
 [![Dependency Status](https://gemnasium.com/Rud5G/chef-baseserver.png)](https://gemnasium.com/Rud5G/chef-baseserver)
 [![Coverage Status](https://coveralls.io/repos/Rud5G/chef-baseserver/badge.png?branch=master)](https://coveralls.io/r/Rud5G/chef-baseserver?branch=master)
@@ -11,23 +12,41 @@ Welcome, do not use this cookbook for any production environment, at this time.
 
 # Requirements
 
+Install chef-dk from the [downloads page](http://www.getchef.com/downloads/chef-dk/) or the [Chef-DK github page](https://github.com/opscode/chef-dk)
 
-To use this cookbook, you need the following software:
+Install Vagrant '>= 1.5.2' from the [Vagrant 1.5.2 downloads page](http://www.vagrantup.com/download-archive/v1.5.2.html)
 
-* kitchen-vagrant
-* [VirtualBox] - Version 4.2 or higher
-* [Vagrant] - Version 1.3.4 or higher
-* [vagrant-omnibus] - installable via `vagrant plugin install vagrant-omnibus`
-* [Berkshelf] - installable via `bundle install`
+Install the Vagrant plugins: Berkshelf, Omnibus, Hostmanager
 
-When you provision a VM using this cookbook, Chef will be installed for you via
-`vagrant-omnibus`, and if necessary an Ubuntu Linux base system image will be
-downloaded automatically. See the project's `Vagrantfile` for exact versions
-used.
-
-
+    $ vagrant plugin install vagrant-berkshelf --plugin-version '>= 2.0.1'
+    $ vagrant plugin install vagrant-omnibus
+    $ vagrant plugin install vagrant-hostmanager
 
 # Usage
+
+## Standalone
+
+Run this cookbook standalone on a vm, use
+
+    $ vagrant up
+
+To re-provision the vm, use
+
+    $ vagrant provision
+
+## Use in an other cookbook
+
+Add this cookbook as a dependency to the metadata.rb in your cookbook.
+
+    depends 'baseserver', '~> 0.7.3'
+
+Add to the Berksfile: 
+
+    cookbook 'baseserver', github: 'Rud5G/chef-baseserver'
+
+Include the recipe: 
+
+    include_recipe 'baseserver::baseserver'
 
 # Attributes
 
@@ -36,3 +55,8 @@ used.
 # Author
 
 Author:: Triple-networks (<r.gravestein@triple-networks.com>)
+
+# Todo 
+
+ * add attributes, data_bags, etc.
+

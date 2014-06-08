@@ -4,11 +4,11 @@ Welcome, do not use this cookbook for any production environment, at this time.
 
 # Status
 
-[![Version Status](http://img.shields.io/badge/stable-0.7.3-blue.svg)]
 [![Build Status](https://travis-ci.org/Rud5G/chef-baseserver.png?branch=master)](https://travis-ci.org/Rud5G/chef-baseserver)
 [![Dependency Status](https://gemnasium.com/Rud5G/chef-baseserver.png)](https://gemnasium.com/Rud5G/chef-baseserver)
 [![Coverage Status](https://coveralls.io/repos/Rud5G/chef-baseserver/badge.png?branch=master)](https://coveralls.io/r/Rud5G/chef-baseserver?branch=master)
 
+[![Version Status](http://img.shields.io/badge/beta-0.7.3-blue.svg)](https://github.com/Rud5G/chef-baseserver)
 
 # Requirements
 

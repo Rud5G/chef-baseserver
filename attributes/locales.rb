@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: baseserver
-# Recipe:: baseserver
+# Attributes:: locales
 #
 # Copyright (C) 2013 Triple-networks
 #
@@ -17,9 +17,5 @@
 # limitations under the License.
 #
 
-# baseserver role
-
-include_recipe 'baseserver::default'
-include_recipe 'baseserver::packages'
-include_recipe 'baseserver::config'
-include_recipe 'baseserver::users'
+# locales
+default['locales'] = %w( en_US.utf8 nl_NL.utf8 )

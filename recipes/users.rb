@@ -30,7 +30,7 @@ begin
     end
   end
 rescue Net::HTTPServerException => e
-  Chef::Application.fatal!("could not load data bag; #{e}")
+  Chef::Application.warn("could not load data bag; #{e}")
 end
 
 # check for users with the specified group (default:users)

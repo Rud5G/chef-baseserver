@@ -7,7 +7,11 @@ describe 'baseserver::baseserver' do
   end
 
   before do
-    stub_data_bag('users').and_return([])
+    stub_data_bag('users').and_return(['username'])
+    stub_data_bag_item('users', 'username').and_return({"id" => "username", "groups" => ["users"]})
+
+    stub_data_bag('config').and_return(['locales'])
+    stub_data_bag_item('config', 'locales').and_return({"id" => "locales", "locales" => ["en_US.utf8","nl_NL.utf8"]})
   end
 
   it 'should include the apt recipe by default' do

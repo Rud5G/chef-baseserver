@@ -24,7 +24,7 @@ locales = node['locales']
 begin
   # add data from possible data_bag_item
   localesdata = data_bag_item('config', 'locales')
-  locales.concat(localesdata['locales'])
+  locales.concat(localesdata['locales']) if localesdata['locales']
 rescue Net::HTTPServerException => e
   Chef::Application.warn("could not load data bag item: config/locales ; #{e}")
 end

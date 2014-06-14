@@ -5,7 +5,7 @@
         "ssh-rsa AAA123...xyz== foo",
         "ssh-rsa AAA456...uvw== bar"
     ],
-    "groups": [ "baseusers", "www-data" ],
+    "groups": [ "users", "www-data" ],
     "uid": 1001,
     "shell": "\/bin\/false",
     "comment": "USER NAME",

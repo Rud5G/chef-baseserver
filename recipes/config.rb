@@ -17,11 +17,23 @@
 # limitations under the License.
 #
 
+# start with standard locales
+
+locales = node['locales']
+
+begin
+  # add data from possible data_bag_item
+  localesdata = data_bag_item('config', 'locales')
+  locales.concat(localesdata['locales'])
+rescue Net::HTTPServerException => e
+  Chef::Application.warn("could not load data bag item: config/locales ; #{e}")
+end
+
 # generate the locales
 bash 'generate the locales' do
   user 'root'
   code <<-EOH
-    sudo locale-gen #{node['locales'].join(' ')} > /tmp/locale.log 2>&1
+    sudo locale-gen #{locales.join(' ')} > /tmp/locale.log 2>&1
     sudo dpkg-reconfigure locales >> /tmp/locale.log 2>&1
   EOH
 end

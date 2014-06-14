@@ -18,4 +18,4 @@
 #
 
 # locales
-default['locales'] = %w( en_US.utf8 nl_NL.utf8 )
+default['locales'] = %w( en_US.utf8 )

@@ -25,6 +25,11 @@ begin
 
     if userdata['groups'].include?(node['users']['create_users_in_group'])
       Chef::Log.info('Create user: ' + userdata['id'])
+
+      # create all groups the user is in.
+      userdata['groups'].each do |groupname|
+        group groupname
+      end
     else
       Chef::Log.warn('Ignored user (invalid groups): ' + userdata['id'])
     end

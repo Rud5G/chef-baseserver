@@ -33,3 +33,5 @@ include_recipe 'git'
 include_recipe 'logrotate'
 
 include_recipe 'fail2ban'
+
+include_recipe 'mailutils'

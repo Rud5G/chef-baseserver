@@ -34,4 +34,4 @@ include_recipe 'logrotate'
 
 include_recipe 'fail2ban'
 
-include_recipe 'mailutils'
+package 'mailutils'

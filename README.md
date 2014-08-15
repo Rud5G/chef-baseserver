@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/rud5g/chef-baseserver.png?label=ready&title=Ready)](https://waffle.io/rud5g/chef-baseserver)
 # BaseServer Cookbook
 
 Welcome, do not use this cookbook for any production environment, at this time.

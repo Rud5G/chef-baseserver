@@ -6,7 +6,7 @@ description 'Installs/Configures a base server'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 description 'Installs/Configures baseserver'
 long_description 'Installs/Configures baseserver'
-version '0.7.8'
+version '0.7.9'
 
 %w( centos redhat ubuntu ).each do |os|
   supports os

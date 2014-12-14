@@ -7,7 +7,7 @@ gem 'rubocop', '~> 0.28.0'
 
 group :integration do
   gem 'test-kitchen', '~> 1.2'
-  gem 'kitchen-vagrant', '~> 0.14'
+  gem 'kitchen-vagrant', '~> 0.15'
 end
 
 # coveralls.io

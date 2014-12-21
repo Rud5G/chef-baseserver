@@ -12,10 +12,7 @@ describe 'baseserver::baseserver' do
     stub_data_bag_item('config', 'locales').and_return('id' => 'locales', 'locales' => ['en_US.utf8', 'nl_NL.utf8'])
   end
 
-
-
   let(:chef_run) { ChefSpec::Runner.new(platform: 'ubuntu', version: '12.04').converge(described_recipe) }
-
 
   it 'should include default recipe' do
     expect(chef_run).to include_recipe('baseserver::default')
@@ -49,8 +46,6 @@ describe 'baseserver::baseserver' do
     end
   end
 
-
-  #
   # # expect(chef_run).to install_package('apache2').at_compile_time
   #
   # it 'should install apt' do

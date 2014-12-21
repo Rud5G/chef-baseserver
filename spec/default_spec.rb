@@ -6,7 +6,7 @@ describe 'baseserver::baseserver' do
     stub_command('which mailx').and_return('/usr/bin/mailx')
 
     stub_data_bag('users').and_return(['username'])
-    stub_data_bag_item('users', 'username').and_return('id' => 'username', 'groups' => ['users'])
+    stub_data_bag_item('users', 'username').and_return('id' => 'newuser', 'password' => 'secret', 'uid' => 5241, 'groups' => ['users'])
 
     stub_data_bag('config').and_return(['locales'])
     stub_data_bag_item('config', 'locales').and_return('id' => 'locales', 'locales' => ['en_US.utf8', 'nl_NL.utf8'])
@@ -42,11 +42,13 @@ describe 'baseserver::baseserver' do
     expect(chef_run).to create_group('users')
   end
 
+  context 'Resource "users_manage"' do
+    it 'creates user' do
+      expect(chef_run).to create_users_manage('users')
+      # expect(chef_run).to create_user('newuser')
+    end
+  end
 
-  # it 'creates a user with an explicit action' do
-  #   expect(chef_run).to remove_user('username')
-  #   expect(chef_run).to create_user('username')
-  # end
 
   #
   # # expect(chef_run).to install_package('apache2').at_compile_time

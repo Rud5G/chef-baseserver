@@ -19,15 +19,3 @@ require 'rspec/core/rake_task'
 RSpec::Core::RakeTask.new(:spec)
 
 task :default => [:style, :spec]
-
-
-begin
-  require 'stove/rake_task'
-
-  Stove::RakeTask.new do |stove|
-    stove.git      = true
-    stove.category = 'Package Management'
-  end
-rescue LoadError => e
-  # Do nothing
-end

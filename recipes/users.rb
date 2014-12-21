@@ -40,7 +40,7 @@ end
 
 # check for users with the specified group (default:users)
 users_manage node['users']['create_users_in_group'] do
-  action [ :remove, :create ]
+  action [:remove, :create]
 end
 
 include_recipe 'users::sysadmins'

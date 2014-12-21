@@ -4,7 +4,6 @@
 VAGRANTFILE_API_VERSION = '2'
 VAGRANT_MIN_VERSION = '1.3.4'
 
-
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 # Check Vagrant version
   if Vagrant::VERSION < VAGRANT_MIN_VERSION
@@ -68,28 +67,22 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     vb.customize [
       'modifyvm', :id,
       '--memory', '1024',
-      '--cpus', '2',
+      '--cpus', '2'
     ]
   end
 
   # Enable SSH agent forwarding for git clones
   config.ssh.forward_agent = true
 
-
   config.vm.provision :chef_solo do |chef|
     # chef.provisioning_path = guest_cache_path
     chef.data_bags_path = 'data_bags'
     chef.environments_path = 'environments'
     chef.roles_path = 'roles'
-    #chef.cookbooks_path = 'vendor/cookbooks'
 
     chef.verbose_logging = true
     chef.node_name = 'baseserver'
     chef.environment = 'development'
-
-
-    chef.json = {
-    }
 
     chef.run_list = [
       'recipe[baseserver::baseserver]'

@@ -1,9 +1,12 @@
 source 'https://rubygems.org'
 
-gem 'berkshelf', '~> 3.2.1'
-gem 'chefspec', '~> 4.1.1'
-gem 'foodcritic', '~> 4.0.0'
-gem 'rubocop', '~> 0.28.0'
+group :development do
+  gem 'berkshelf', '~> 3.2.1'
+  gem 'cane'
+  gem 'chefspec', '~> 4.0.1'
+  gem 'foodcritic', '~> 4.0.0'
+  gem 'rubocop', '~> 0.28.0'
+end
 
 group :integration do
   gem 'test-kitchen', '~> 1.2'

@@ -17,9 +17,15 @@
 # limitations under the License.
 #
 
-# compile_time
-default['apt']['compiletime'] = true
-default['build-essential']['compile_time'] = true
+# compiletime
+default['apt']['compiletime'] = false               # force the cacher-client recipe to run before other recipes. It forces apt to use the proxy
+                                                    # before other recipes run. Useful if your nodes have limited access to public apt repositories.
+                                                    # This is overridden if the cacher-ng recipe is in your run list. Default is 'false'
+
+default['apt']['compile_time_update'] = true        # force the default recipe to run apt-get update at compile time.
+
+# build-essential
+default['build-essential']['compile_time'] = true   # Execute resources at compile time
 
 # ntp
 default['ntp']['servers'] = %w( 0.nl.pool.ntp.org 1.nl.pool.ntp.org 2.nl.pool.ntp.org 3.nl.pool.ntp.org )

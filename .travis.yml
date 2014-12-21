@@ -1,5 +1,7 @@
 rvm:
   - 2.1
+cache:
+  - bundler
 
 before_script:
   - bundle exec berks install
@@ -7,3 +9,6 @@ script:
   - bundle exec foodcritic -f any .
   - bundle exec rubocop
   - bundle exec rspec
+branches:
+  only:
+    - master

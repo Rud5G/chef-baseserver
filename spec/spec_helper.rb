@@ -1,10 +1,17 @@
 require 'chefspec'
+ChefSpec::Coverage.start!
+
 require 'chefspec/berkshelf'
+require 'chef/application'
 
 
-RSpec.configure do |config|
-  config.platform = 'ubuntu'
-  config.version = '12.04'
+::LOG_LEVEL = :debug
+::CHEFSPEC_OPTS = {
+    log_level:  ::LOG_LEVEL
+}
+
+def stub_resources
 end
+
 
 at_exit { ChefSpec::Coverage.report! }

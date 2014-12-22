@@ -5,13 +5,13 @@ VAGRANTFILE_API_VERSION = '2'
 VAGRANT_MIN_VERSION = '1.3.4'
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-# Check Vagrant version
+  # Check Vagrant version
   if Vagrant::VERSION < VAGRANT_MIN_VERSION
     puts "FATAL: Cookbook depends on Vagrant #{VAGRANT_MIN_VERSION} or higher."
     exit
   end
 
-# Plugin-specific configurations
+  # Plugin-specific configurations
   # Detects vagrant-cachier plugin
   if Vagrant.has_plugin?('vagrant-cachier')
     puts 'INFO:  Vagrant-cachier plugin detected. Optimizing caches.'
@@ -53,12 +53,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     exit
   end
 
-# vm config
+  # vm config
   config.vm.hostname = 'chef-baseserver'
 
   config.vm.box = 'opscode-ubuntu-12.04'
   config.vm.box_url = 'https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_ubuntu-12.04_provisionerless.box'
-
 
   config.vm.network :private_network, :ip => '33.33.33.50'
 
@@ -89,4 +88,3 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     ]
   end
 end
-

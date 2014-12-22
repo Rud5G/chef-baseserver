@@ -34,7 +34,6 @@ describe 'baseserver::baseserver' do
     expect(chef_run).to install_package('mailutils')
   end
 
-
   it 'creates a group with the default action' do
     expect(chef_run).to create_group('users')
   end
@@ -84,5 +83,4 @@ describe 'baseserver::baseserver' do
   # it 'should include the sysadmins recipe by default' do
   #   expect(chef_run).to include_recipe('users::sysadmins')
   # end
-
 end

@@ -15,4 +15,3 @@ end
 
 # coveralls.io
 gem 'coveralls', require: false
-

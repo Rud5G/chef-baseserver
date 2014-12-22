@@ -1,5 +1,6 @@
 require 'chefspec'
-ChefSpec::Coverage.start!
+require 'coveralls'
+Coveralls.wear!
 
 require 'chefspec/berkshelf'
 require 'chef/application'
@@ -18,4 +19,4 @@ if defined?(ChefSpec)
   end
 end
 
-at_exit { ChefSpec::Coverage.report! }
+# at_exit { ChefSpec::Coverage.report! }

@@ -1,3 +1,6 @@
+require 'simplecov'
+SimpleCov.start
+
 require 'chefspec'
 require 'coveralls'
 Coveralls.wear!

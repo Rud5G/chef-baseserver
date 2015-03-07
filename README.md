@@ -7,7 +7,7 @@ Welcome, do not use this cookbook for any production environment, at this time.
 [![Build Status](https://travis-ci.org/Rud5G/chef-baseserver.png?branch=master)](https://travis-ci.org/Rud5G/chef-baseserver)
 [![Dependency Status](https://gemnasium.com/Rud5G/chef-baseserver.png)](https://gemnasium.com/Rud5G/chef-baseserver)
 [![Coverage Status](https://coveralls.io/repos/Rud5G/chef-baseserver/badge.png?branch=master)](https://coveralls.io/r/Rud5G/chef-baseserver?branch=master)
-[![Version Status](http://img.shields.io/badge/beta-0.7.10-blue.svg)](https://github.com/Rud5G/chef-baseserver)
+[![Version Status](http://img.shields.io/badge/beta-0.7.11-blue.svg)](https://github.com/Rud5G/chef-baseserver)
 [![Stories in Ready](https://badge.waffle.io/rud5g/chef-baseserver.png?label=ready&title=Ready)](https://waffle.io/rud5g/chef-baseserver)
 
 # Requirements
@@ -38,13 +38,13 @@ To re-provision the vm, use
 
 Add this cookbook as a dependency to the metadata.rb in your cookbook.
 
-    depends 'baseserver', '~> 0.7.3'
+    depends 'baseserver', '~> 0.7.11'
 
-Add to the Berksfile: 
+Add to the Berksfile:
 
     cookbook 'baseserver', github: 'Rud5G/chef-baseserver'
 
-Include the recipe: 
+Include the recipe:
 
     include_recipe 'baseserver::baseserver'
 
@@ -56,7 +56,7 @@ Include the recipe:
 
 Author:: Triple-networks (<r.gravestein@triple-networks.com>)
 
-# Todo 
+# Todo
 
  * add attributes, data_bags, etc.
 

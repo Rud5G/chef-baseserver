@@ -17,8 +17,6 @@
 # limitations under the License.
 #
 
-include_recipe 'chef-solo-search' if Chef::Config[:solo]
-
 begin
   data_bag('users').each do |user|
     userdata = data_bag_item('users', user)
@@ -30,6 +28,8 @@ begin
       userdata['groups'].each do |groupname|
         group groupname
       end
+
+
     else
       Chef::Log.warn('Ignored user (invalid groups): ' + userdata['id'])
     end
@@ -44,3 +44,4 @@ users_manage node['users']['create_users_in_group'] do
 end
 
 include_recipe 'users::sysadmins'
+

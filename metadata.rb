@@ -4,7 +4,7 @@ maintainer_email 'r.gravestein@triple-networks.com'
 license 'Apache 2.0'
 description 'Installs/Configures baseserver'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version '0.7.11'
+version '0.8.0'
 
 # provide
 provides 'baseserver::baseserver'
@@ -14,17 +14,22 @@ provides 'baseserver::baseserver'
   supports os
 end
 
-depends 'apt', '~> 2.6.0'
-depends 'build-essential', '~> 2.1.3'
+depends 'apt', '~> 2.7.0'
+depends 'build-essential', '~> 2.2.3'
 depends 'fail2ban', '~> 2.2.1'
-depends 'git', '~> 4.0.2'
+depends 'git', '~> 4.2.2'
 depends 'hostsfile', '~> 2.4.5'
-depends 'logrotate', '~> 1.7.0'
-depends 'ntp', '~> 1.6.2'
+depends 'logrotate', '~> 1.9.1'
+depends 'ntp', '~> 1.8.2'
+depends 'users', '~> 1.8.2'
+depends 'vim'
+depends 'yum', '~> 3.6.0'
+
+depends 'vim'
+
 depends 'unattended-upgrades', '~> 0.1.2'
-depends 'users', '~> 1.7.0'
-depends 'vim', '~> 1.1.2'
-depends 'yum', '~> 3.5.1'
 
 # additional for chef-solo
-depends 'chef-solo-search', '~> 0.5.1'
+## depends 'chef-solo-search', '~> 0.5.1'
+
+# we moved to chef-zero

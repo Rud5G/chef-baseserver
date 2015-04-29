@@ -1,8 +1,12 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+CHEF_VM_NAME = 'baseserver'
+CHEF_VM_HOSTNAME = 'baseserver.dev'
+CHEF_VM_ENVIRONMENT = 'development'
+
 VAGRANTFILE_API_VERSION = '2'
-VAGRANT_MIN_VERSION = '1.3.4'
+VAGRANT_MIN_VERSION = '1.7.2'
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Check Vagrant version
@@ -22,6 +26,26 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     puts 'WARN:  Vagrant-cachier plugin not detected. Continuing unoptimized.'
   end
 
+  # Detects vagrant omnibus plugin
+  if Vagrant.has_plugin?('vagrant-omnibus')
+    puts 'INFO:  Vagrant-omnibus plugin detected.'
+    config.omnibus.chef_version = :latest
+  else
+    puts "FATAL: Vagrant-omnibus plugin not detected. Please install the plugin with\n       'vagrant plugin install vagrant-omnibus' from any other directory\n       before continuing."
+    exit
+  end
+
+  # Detects vagrant berkshelf plugin
+  if Vagrant.has_plugin?('berkshelf')
+    puts 'INFO:  Vagrant-berkshelf plugin detected.'
+    # The path to the Berksfile to use with Vagrant Berkshelf
+    config.berkshelf.berksfile_path = './Berksfile'
+    config.berkshelf.enabled = true
+  else
+    puts "FATAL: Vagrant-berkshelf plugin not detected. Please install the plugin with\n       'vagrant plugin install vagrant-berkshelf' from any other directory\n       before continuing."
+    exit
+  end
+
   # Detects vagrant-cachier plugin
   if Vagrant.has_plugin?('vagrant-hostmanager')
     puts 'INFO:  Vagrant-hostmanager plugin detected.'
@@ -34,30 +58,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     puts "WARN:  Vagrant-hostmanager plugin not detected. Please install the plugin with\n       'vagrant plugin install vagrant-hostmanager' from any other directory\n       before continuing."
   end
 
-  # Detects vagrant-omnibus plugin
-  if Vagrant.has_plugin?('vagrant-omnibus')
-    puts 'INFO:  Vagrant-omnibus plugin detected.'
-    config.omnibus.chef_version = :latest
-  else
-    puts "FATAL: Vagrant-omnibus plugin not detected. Please install the plugin with\n       'vagrant plugin install vagrant-omnibus' from any other directory\n       before continuing."
-    exit
-  end
-
-  # Detects vagrant-berkshelf plugin
-  if Vagrant.has_plugin?('berkshelf')
-    # The path to the Berksfile to use with Vagrant Berkshelf
-    puts 'INFO:  Vagrant-berkshelf plugin detected.'
-    config.berkshelf.berksfile_path = './Berksfile'
-  else
-    puts "FATAL: Vagrant-berkshelf plugin not detected. Please install the plugin with\n       'vagrant plugin install vagrant-berkshelf' from any other directory\n       before continuing."
-    exit
-  end
-
   # vm config
-  config.vm.hostname = 'chef-baseserver'
+  config.vm.hostname = CHEF_VM_HOSTNAME
 
-  config.vm.box = 'opscode-ubuntu-12.04'
-  config.vm.box_url = 'https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_ubuntu-12.04_provisionerless.box'
+  config.vm.box = 'opscode-ubuntu-14.04'
+  config.vm.box_url = 'http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_ubuntu-14.04_chef-provisionerless.box'
 
   config.vm.network :private_network, :ip => '33.33.33.50'
 
@@ -73,18 +78,24 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Enable SSH agent forwarding for git clones
   config.ssh.forward_agent = true
 
-  config.vm.provision :chef_solo do |chef|
-    # chef.provisioning_path = guest_cache_path
+  # provision config
+  config.vm.provision :chef_zero do |chef|
+
+    chef.cookbooks_path = 'cookbooks'
     chef.data_bags_path = 'data_bags'
     chef.environments_path = 'environments'
     chef.roles_path = 'roles'
 
-    chef.verbose_logging = true
-    chef.node_name = 'baseserver'
-    chef.environment = 'development'
+    chef.node_name = CHEF_VM_NAME
+    chef.environment = CHEF_VM_ENVIRONMENT
 
-    chef.run_list = [
-      'recipe[baseserver::baseserver]'
-    ]
+    chef.log_level = :info
+    chef.log_level = :debug
+    # chef.verbose_logging = true
+
+    chef.run_list = %w(
+      recipe[baseserver::baseserver]
+    )
+
   end
 end

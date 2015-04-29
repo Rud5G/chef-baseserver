@@ -18,4 +18,5 @@
 #
 
 # display Chef Config object
-# Chef::Log.info(Chef::Config.inspect)
+
+Chef::Log.info(Chef::Config.inspect)

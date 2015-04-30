@@ -24,7 +24,7 @@ include_recipe 'yum'
 include_recipe 'unattended-upgrades'
 include_recipe 'build-essential'
 
-include_recipe 'vim'
+# include_recipe 'vim'
 
 include_recipe 'ntp'
 
@@ -35,3 +35,4 @@ include_recipe 'logrotate'
 include_recipe 'fail2ban'
 
 package 'mailutils'
+package 'vim'

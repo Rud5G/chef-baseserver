@@ -80,7 +80,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # provision config
   config.vm.provision :chef_zero do |chef|
-
     chef.cookbooks_path = 'cookbooks'
     chef.data_bags_path = 'data_bags'
     chef.environments_path = 'environments'

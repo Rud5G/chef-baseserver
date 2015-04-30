@@ -25,11 +25,9 @@ depends 'users', '~> 1.8.2'
 depends 'vim'
 depends 'yum', '~> 3.6.0'
 
-depends 'vim'
+# depends 'vim'
 
 depends 'unattended-upgrades', '~> 0.1.2'
 
-# additional for chef-solo
-## depends 'chef-solo-search', '~> 0.5.1'
-
-# we moved to chef-zero
+# we moved to chef-zero, but still have an issue
+depends 'chef-solo-search', '~> 0.5.1'

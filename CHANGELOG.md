@@ -2,6 +2,8 @@ Baseserver CHANGELOG
 ====================
 This is the Changelog for the Baseserver cookbook.
 
+v0.8.0 (2015-04-30)
+- Add databag: user groups to user additional groups
 
 v0.7.8 (2014-08-15)
 -------------------

@@ -36,7 +36,7 @@ begin
   end
   
 rescue Net::HTTPServerException => e
-  Chef::Application.info("could not load data bag item: config/locales ; #{e}")
+  Chef::Log.info("could not load data bag item: config/locales ; #{e}")
 end
 
     

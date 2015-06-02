@@ -25,16 +25,18 @@ begin
   # add data from possible data_bag_item
   localesdata = data_bag_item('config', 'locales')
   locales.concat(localesdata['locales']) if localesdata['locales']
+  
+  # generate the locales
+  bash 'generate the locales' do
+    user 'root'
+    code <<-EOH
+      locale-gen #{locales.join(' ')} > /tmp/locale.log 2>&1
+      dpkg-reconfigure locales >> /tmp/locale.log 2>&1
+    EOH
+  end
+  
 rescue Net::HTTPServerException => e
-  Chef::Application.warn("could not load data bag item: config/locales ; #{e}")
+  Chef::Application.info("could not load data bag item: config/locales ; #{e}")
 end
 
-# generate the locales
-bash 'generate the locales' do
-  user 'root'
-  code <<-EOH
-    locale-gen #{locales.join(' ')} > /tmp/locale.log 2>&1
-    dpkg-reconfigure locales >> /tmp/locale.log 2>&1
-  EOH
-end
     

@@ -33,7 +33,8 @@ end
 bash 'generate the locales' do
   user 'root'
   code <<-EOH
-    sudo locale-gen #{locales.join(' ')} > /tmp/locale.log 2>&1
-    sudo dpkg-reconfigure locales >> /tmp/locale.log 2>&1
+    locale-gen #{locales.join(' ')} > /tmp/locale.log 2>&1
+    dpkg-reconfigure locales >> /tmp/locale.log 2>&1
   EOH
 end
+    

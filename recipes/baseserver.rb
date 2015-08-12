@@ -23,4 +23,3 @@ include_recipe 'baseserver::default'
 include_recipe 'baseserver::config'
 include_recipe 'baseserver::users'
 include_recipe 'baseserver::packages'
-

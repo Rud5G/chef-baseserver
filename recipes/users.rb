@@ -49,4 +49,3 @@ begin
 rescue Net::HTTPServerException => e
   Chef::Application.warn("could not load data bag; #{e}")
 end
-

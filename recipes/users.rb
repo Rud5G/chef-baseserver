@@ -17,7 +17,6 @@
 # limitations under the License.
 #
 
-
 # check for users with the specified group (default:users)
 users_manage node['users']['create_users_in_group'] do
   action [:remove, :create]
@@ -50,5 +49,3 @@ begin
 rescue Net::HTTPServerException => e
   Chef::Application.warn("could not load data bag; #{e}")
 end
-
-

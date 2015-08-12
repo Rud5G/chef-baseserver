@@ -89,7 +89,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.environment = CHEF_VM_ENVIRONMENT
 
     chef.log_level = :info
-    chef.log_level = :debug
+    # chef.log_level = :debug
     # chef.verbose_logging = true
 
     chef.run_list = %w(

@@ -14,8 +14,9 @@ services: docker
 
 env:
   matrix:
+  - INSTANCE=ubuntu-14.04
 #  - INSTANCE=default-ubuntu-1204
-  - INSTANCE=default-ubuntu-1404
+#  - INSTANCE=default-ubuntu-1404
 #  - INSTANCE=default-centos-6
 #  - INSTANCE=default-centos-7
 

@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 group :unit do
   gem 'berkshelf',  '~> 4.0'
   gem 'chefspec',   '~> 4.4'

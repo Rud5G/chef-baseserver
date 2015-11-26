@@ -21,7 +21,6 @@
 include_recipe 'apt'
 include_recipe 'yum'
 
-include_recipe 'unattended-upgrades'
 include_recipe 'build-essential'
 
 # include_recipe 'vim'

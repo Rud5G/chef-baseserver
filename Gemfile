@@ -1,17 +1,24 @@
 source 'https://rubygems.org'
 
-group :development do
-  gem 'berkshelf', '~> 3.2.1'
-  gem 'cane'
-  gem 'chefspec', '~> 4.0.1'
+
+group :unit do
+  gem 'berkshelf',  '~> 4.0'
+  gem 'chefspec',   '~> 4.4'
+end
+
+group :lint do
   gem 'foodcritic', '~> 4.0.0'
   gem 'rubocop', '~> 0.28.0'
-  gem 'stove'
 end
 
 group :integration do
-  gem 'test-kitchen', '~> 1.2'
-  gem 'kitchen-vagrant', '~> 0.15'
+  gem 'test-kitchen', '~> 1.4'
+  gem 'kitchen-vagrant', '~> 0.19'
+end
+
+group :development do
+  gem 'cane'
+  gem 'stove'
 end
 
 group :test do

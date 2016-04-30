@@ -7,7 +7,7 @@ Welcome, use this cookbook for production environments at own risk.
 [![Build Status](https://travis-ci.org/Rud5G/chef-baseserver.png?branch=master)](https://travis-ci.org/Rud5G/chef-baseserver)
 [![Dependency Status](https://gemnasium.com/Rud5G/chef-baseserver.png)](https://gemnasium.com/Rud5G/chef-baseserver)
 [![Coverage Status](https://coveralls.io/repos/Rud5G/chef-baseserver/badge.png?branch=master)](https://coveralls.io/r/Rud5G/chef-baseserver?branch=master)
-[![Version Status](http://img.shields.io/badge/beta-0.9.0-blue.svg)](https://github.com/Rud5G/chef-baseserver)
+[![Version Status](http://img.shields.io/badge/beta-0.8.6-blue.svg)](https://github.com/Rud5G/chef-baseserver)
 
 # Requirements
 

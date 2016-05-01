@@ -18,4 +18,6 @@
 #
 
 # locales
-default['locales'] = %w( en_US.utf8 )
+# default['locales'] = %w( en_US.utf8 )
+
+# node['locales']['default'] = 'en_US.utf8'

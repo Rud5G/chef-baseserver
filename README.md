@@ -38,7 +38,7 @@ Set the required users & config in the databags.
 Add this cookbook as a dependency to the metadata.rb in your cookbook.
 check the current version in the metadata.rb
 
-    depends 'baseserver', '~> 0.9.0'
+    depends 'baseserver', '~> 0.8.8'
 
 Add to the Berksfile:
 

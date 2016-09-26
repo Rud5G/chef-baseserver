@@ -55,11 +55,6 @@ describe 'baseserver::baseserver' do
   #   expect(chef_run).to install_apt_package('apt')
   # end
   #
-  # it 'should include the yum recipe by default' do
-  #   expect(chef_run).to_not install_apt_package('yum')
-  #   # expect(chef_run).to include_recipe 'yum'
-  # end
-  #
   # it 'should include the git recipe by default' do
   #   expect(chef_run).to install_apt_package('git')
   # end

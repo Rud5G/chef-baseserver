@@ -17,7 +17,10 @@
 # limitations under the License.
 #
 
-# locales
-# default['locales'] = %w( en_US.utf8 )
+default['locales']['default'] = 'en_US.utf8'
 
-# node['locales']['default'] = 'en_US.utf8'
+if node['platform'] == 'ubuntu'
+  if node['platform_version'].to_f == '16.04'
+    default['locales']['locale_file'] = '/etc/default/locale'
+  end
+end

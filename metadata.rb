@@ -12,9 +12,7 @@ version '0.9.1'
 provides 'baseserver::baseserver'
 
 # support
-%w( ubuntu ).each do |os|
-  supports os
-end
+supports ubuntu
 
 depends 'apt', '~> 4.0.2'
 depends 'build-essential', '~> 6.0.6'

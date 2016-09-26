@@ -6,7 +6,7 @@ description 'Installs/Configures baseserver'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 issues_url 'https://github.com/Rud5G/chef-baseserver/issues' if respond_to?(:issues_url)
 source_url 'https://github.com/Rud5G/chef-baseserver' if respond_to?(:source_url)
-version '0.9.1'
+version '0.9.2'
 
 # provide
 provides 'baseserver::baseserver'

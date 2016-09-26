@@ -12,7 +12,7 @@ version '0.9.2'
 provides 'baseserver::baseserver'
 
 # support
-supports ubuntu
+supports 'ubuntu'
 
 depends 'apt', '~> 4.0.2'
 depends 'build-essential', '~> 6.0.6'

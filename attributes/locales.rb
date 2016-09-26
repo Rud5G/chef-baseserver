@@ -19,8 +19,8 @@
 
 default['locales']['default'] = 'en_US.utf8'
 
-if node['platform'] == 'ubuntu'
-  if node['platform_version'].to_f == '16.04'
-    default['locales']['locale_file'] = '/etc/default/locale'
-  end
-end
+# if node['platform'] == 'ubuntu'
+# if node['platform_version'].to_f == '16.04'
+default['locales']['locale_file'] = '/etc/default/locale'
+# end
+# end

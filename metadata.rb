@@ -4,7 +4,9 @@ maintainer_email 'r.gravestein@triple-networks.com'
 license 'Apache 2.0'
 description 'Installs/Configures baseserver'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version '0.9.0'
+issues_url 'https://github.com/Rud5G/chef-baseserver/issues' if respond_to?(:issues_url)
+source_url 'https://github.com/Rud5G/chef-baseserver' if respond_to?(:source_url)
+version '0.9.1'
 
 # provide
 provides 'baseserver::baseserver'

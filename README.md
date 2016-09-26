@@ -13,36 +13,22 @@ Welcome, use this cookbook for production environments at own risk.
 
 Install chef-dk from the downloads page on the [Chef-DK github page](https://github.com/opscode/chef-dk)
 
-Install latest Vagrant from the [Vagrant downloads page](https://www.vagrantup.com/downloads.html)
-
-Install the Vagrant plugins: Berkshelf, Omnibus, Hostmanager
-
-    $ vagrant plugin install vagrant-berkshelf
-    $ vagrant plugin install vagrant-omnibus
-    $ vagrant plugin install vagrant-hostmanager
-
 # Usage
 
 ### Standalone (testing)
 
 Set the required users & config in the databags.
 
-    $ vagrant up
-    $ vagrant provision
-    $ vagrant destroy
-
-    $ vagrant destroy && vagrant up
+    $ kitchen create
+    $ kitchen converge
+    $ kitchen destroy
 
 ## Use in an other cookbook
 
 Add this cookbook as a dependency to the metadata.rb in your cookbook.
 check the current version in the metadata.rb
 
-    depends 'baseserver', '~> 0.8.8'
-
-Add to the Berksfile:
-
-    cookbook 'baseserver', github: 'Rud5G/chef-baseserver'
+    depends 'baseserver', '~> 0.9.0'
 
 Include the recipe:
 
@@ -58,4 +44,5 @@ Author:: Triple-networks (<r.gravestein@triple-networks.com>)
 
 # Todo
 
- * see github issues.
+ see github issues.
+

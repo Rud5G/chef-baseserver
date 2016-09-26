@@ -18,8 +18,3 @@
 #
 
 include_recipe 'locales::default'
-
-# start with standard locales
-
-wlocales = node['locales']
-

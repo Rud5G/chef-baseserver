@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: baseserver
-# Recipe:: default
+# Attributes:: logwatch
 #
 # Copyright (C) 2013 Triple-networks
 #
@@ -17,23 +17,8 @@
 # limitations under the License.
 #
 
-# start packages
-include_recipe 'apt'
-include_recipe 'yum'
-
-include_recipe 'build-essential'
-
-include_recipe 'ntp'
-
-include_recipe 'git'
-
-include_recipe 'logrotate'
-
-include_recipe 'fail2ban'
-
-package 'mailutils'
-
-include_recipe 'logwatch'
-
-package 'vim'
-# include_recipe 'vim'
+# default['logwatch']['email'] = 'root@localhost'
+# default['logwatch']['detail'] = 'Low'
+# default['logwatch']['range']  = 'yesterday'
+# default['logwatch']['format'] = 'text'
+# default['logwatch']['directives'] = ['Print = Yes', 'Output = mail', 'Service = All']

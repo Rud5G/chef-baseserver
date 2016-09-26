@@ -19,7 +19,6 @@
 
 # start packages
 include_recipe 'apt'
-include_recipe 'yum'
 
 include_recipe 'build-essential'
 

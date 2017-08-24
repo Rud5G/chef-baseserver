@@ -44,38 +44,38 @@ describe 'baseserver::baseserver' do
       # expect(chef_run).to create_user('newuser')
     end
   end
-
-  # # expect(chef_run).to install_package('apache2').at_compile_time
-  #
-  # it 'should install apt' do
-  #   expect(chef_run).to install_package('apt')
-  # end
-  #
-  # it 'should include the apt recipe by default' do
-  #   expect(chef_run).to install_apt_package('apt')
-  # end
-  #
-  # it 'should include the git recipe by default' do
-  #   expect(chef_run).to install_apt_package('git')
-  # end
-  #
-  # it 'should include the ntp recipe by default' do
-  #   expect(chef_run).to install_apt_package('ntp')
-  # end
-  #
-  # it 'should include the logrotate recipe by default' do
-  #   expect(chef_run).to install_apt_package('logrotate')
-  # end
-  #
-  # it 'should include the fail2ban recipe by default' do
-  #   expect(chef_run).to install_apt_package('fail2ban')
-  # end
-  #
-  # it 'should include the vim recipe by default' do
-  #   expect(chef_run).to install_apt_package('vim')
-  # end
-  #
-  # it 'should include the sysadmins recipe by default' do
-  #   expect(chef_run).to include_recipe('users::sysadmins')
-  # end
 end
+
+# # expect(chef_run).to install_package('apache2').at_compile_time
+#
+# it 'should install apt' do
+#   expect(chef_run).to install_package('apt')
+# end
+#
+# it 'should include the apt recipe by default' do
+#   expect(chef_run).to install_apt_package('apt')
+# end
+#
+# it 'should include the git recipe by default' do
+#   expect(chef_run).to install_apt_package('git')
+# end
+#
+# it 'should include the ntp recipe by default' do
+#   expect(chef_run).to install_apt_package('ntp')
+# end
+#
+# it 'should include the logrotate recipe by default' do
+#   expect(chef_run).to install_apt_package('logrotate')
+# end
+#
+# it 'should include the fail2ban recipe by default' do
+#   expect(chef_run).to install_apt_package('fail2ban')
+# end
+#
+# it 'should include the vim recipe by default' do
+#   expect(chef_run).to install_apt_package('vim')
+# end
+#
+# it 'should include the sysadmins recipe by default' do
+#   expect(chef_run).to include_recipe('users::sysadmins')
+# end

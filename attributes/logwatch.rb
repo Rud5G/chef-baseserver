@@ -21,4 +21,6 @@
 # default['logwatch']['detail'] = 'Low'
 # default['logwatch']['range']  = 'yesterday'
 # default['logwatch']['format'] = 'text'
-# default['logwatch']['directives'] = ['Print = Yes', 'Output = mail', 'Service = All']
+# default['logwatch']['directives'] = [
+#   'Print = Yes', 'Output = mail', 'Service = All'
+# ]

@@ -64,7 +64,7 @@ Style/ConstantName:
   Enabled: true
 Style/DefWithParentheses:
   Enabled: true
-Style/DeprecatedHashMethods:
+Style/PreferredHashMethods:
   Enabled: true
 Style/Documentation:
   Enabled: true
@@ -150,7 +150,7 @@ Style/LeadingCommentSpace:
   Enabled: true
 Style/LineEndConcatenation:
   Enabled: true
-Style/MethodCallParentheses:
+Style/MethodCallWithoutArgsParentheses:
   Enabled: true
 Style/MethodDefParentheses:
   Enabled: true
@@ -334,6 +334,8 @@ Style/ZeroLengthPredicate:
   Enabled: true
 Metrics/AbcSize:
   Enabled: true
+Metrics/BlockLength:
+  Enabled: false
 Metrics/BlockNesting:
   Enabled: true
 Metrics/ClassLength:
@@ -343,7 +345,7 @@ Metrics/ModuleLength:
 Metrics/CyclomaticComplexity:
   Enabled: true
 Metrics/LineLength:
-  Enabled: true
+  Enabled: false
 Metrics/MethodLength:
   Enabled: true
 Metrics/ParameterLists:
@@ -386,7 +388,7 @@ Lint/EndInMethod:
   Enabled: true
 Lint/EnsureReturn:
   Enabled: true
-Lint/Eval:
+Security/Eval:
   Enabled: true
 Lint/FloatOutOfRange:
   Enabled: true

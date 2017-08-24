@@ -18,15 +18,17 @@
 #
 
 # check for users with the specified group (default:users)
+# users_manage node['users']['create_users_in_group'] do
+# action :remove
+# end
 users_manage node['users']['create_users_in_group'] do
-  action [:remove, :create]
+  action :create
 end
 
 include_recipe 'users::sysadmins'
 
 # additional create the "groups": (which is not "group") and add the users
 begin
-
   data_bag('users').each do |user|
     userdata = data_bag_item('users', user)
 

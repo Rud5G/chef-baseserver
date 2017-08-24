@@ -6,7 +6,7 @@ Welcome, use this cookbook for production environments at own risk.
 
 [![Build Status](https://travis-ci.org/Rud5G/chef-baseserver.png?branch=master)](https://travis-ci.org/Rud5G/chef-baseserver)
 [![Coverage Status](https://coveralls.io/repos/Rud5G/chef-baseserver/badge.png?branch=master)](https://coveralls.io/r/Rud5G/chef-baseserver?branch=master)
-[![Version Status](http://img.shields.io/badge/beta-0.9.3-blue.svg)](https://github.com/Rud5G/chef-baseserver)
+[![Version Status](http://img.shields.io/badge/beta-0.9.4-blue.svg)](https://github.com/Rud5G/chef-baseserver)
 
 # Requirements
 
@@ -27,7 +27,7 @@ Set the required users & config in the databags.
 Add this cookbook as a dependency to the metadata.rb in your cookbook.
 check the current version in the metadata.rb
 
-    depends 'baseserver', '~> 0.9.3'
+    depends 'baseserver', '~> 0.9.4'
 
 Include the recipe:
 
